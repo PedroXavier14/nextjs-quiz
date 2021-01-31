@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -8,17 +7,9 @@ import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
+import QuizContainer from '../src/components/QuizContainer';
 
 export default function Home() {
   const router = useRouter();
@@ -45,10 +36,10 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <form onSubmit={formSubmit}>
-              <input placeholder="Enter your name" onChange={onChange} />
-              <button type="submit" disabled={name.length === 0}>
+              <Input name="username" placeholder="Enter your name" onChange={onChange} value={name} />
+              <Button type="submit" disabled={name.length === 0}>
                 Jogar {name}
-              </button>
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
