@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import QuizBackground from '../src/components/QuizBackground';
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import Button from '../src/components/Button';
-import QuizContainer from '../src/components/QuizContainer';
-import QuizLogo from '../src/components/QuizLogo';
-import AlternativesForm from '../src/components/AlternativesForm';
+import QuizBackground from '../../components/QuizBackground';
+import Widget from '../../components/Widget';
+import Button from '../../components/Button';
+import QuizContainer from '../../components/QuizContainer';
+import QuizLogo from '../../components/QuizLogo';
+import AlternativesForm from '../../components/AlternativesForm';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 const ResultWidget = ({ results, name }) => (
   <Widget>
@@ -75,6 +75,7 @@ const QuestionWidget = ({
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>Question {questionIndex + 1} of {totalQuestions}</h3>
       </Widget.Header>
       <img
@@ -141,7 +142,7 @@ const SCREEN_STATES = {
 };
 
 // eslint-disable-next-line react/prop-types
-export default function QuizPage() {
+export default function QuizPage({ questions, bg }) {
   const {
     query: { name },
   } = useRouter();
@@ -149,8 +150,8 @@ export default function QuizPage() {
   const [screenState, setScreenState] = useState(SCREEN_STATES.LOADING);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [results, setResults] = useState([]);
-  const totalQuestions = db.questions.length;
-  const question = db.questions[questionIndex];
+  const totalQuestions = questions.length;
+  const question = questions[questionIndex];
 
   const addResult = (result) => {
     setResults([
@@ -174,17 +175,17 @@ export default function QuizPage() {
     }
   };
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={bg}>
       <QuizContainer>
         <QuizLogo />
         {screenState === SCREEN_STATES.QUIZ && (
-        <QuestionWidget
-          question={question}
-          totalQuestions={totalQuestions}
-          questionIndex={questionIndex}
-          onSubmit={handleSubmitQuestion}
-          addResult={addResult}
-        />
+          <QuestionWidget
+            question={question}
+            totalQuestions={totalQuestions}
+            questionIndex={questionIndex}
+            onSubmit={handleSubmitQuestion}
+            addResult={addResult}
+          />
         )}
         {screenState === SCREEN_STATES.LOADING && <LoadingWidget />}
 

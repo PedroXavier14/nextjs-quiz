@@ -27,7 +27,9 @@
         }
     ],
     "external": [
-        ""
+        "https://1sec-quiz.victoroda.vercel.app/",
+        "https://pato-quiz-nextjs.theedouglasam.vercel.app/",
+        "https://vitor-quiz-git-main.vitorbarbosa.vercel.app/"
     ],
     "theme": {
         "colors": {
