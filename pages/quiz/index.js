@@ -9,6 +9,7 @@ import QuizContainer from '../../src/components/QuizContainer';
 import QuizLogo from '../../src/components/QuizLogo';
 import AlternativesForm from '../../src/components/AlternativesForm';
 import BackLinkArrow from '../../src/components/BackLinkArrow';
+import Loading from '../../src/components/Loading';
 
 const ResultWidget = ({ results, name }) => (
   <Widget>
@@ -37,14 +38,7 @@ const ResultWidget = ({ results, name }) => (
 );
 
 const LoadingWidget = () => (
-  <Widget>
-    <Widget.Header>
-      Loading...
-    </Widget.Header>
-    <Widget.Content>
-      [Loading Challenge]
-    </Widget.Content>
-  </Widget>
+  <Loading />
 );
 
 const submitForm = (
@@ -165,7 +159,7 @@ export default function QuizPage() {
   useEffect(() => {
     setTimeout(() => {
       setScreenState(SCREEN_STATES.QUIZ);
-    }, 1 * 1000);
+    }, 2.6 * 1000);
   }, []);
 
   const handleSubmitQuestion = () => {
