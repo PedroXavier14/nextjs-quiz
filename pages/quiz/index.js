@@ -13,6 +13,7 @@ import BackLinkArrow from '../../src/components/BackLinkArrow';
 const ResultWidget = ({ results, name }) => (
   <Widget>
     <Widget.Header>
+      <BackLinkArrow href="/" />
       Results to {name}
     </Widget.Header>
     <Widget.Content>
