@@ -4,15 +4,13 @@ import QuizScreen from '../../src/screens/Quiz';
 import db from '../../db.json';
 
 const OtherQuiz = ({ externalDb }) => (
-  <div>
-    <ThemeProvider theme={externalDb.theme}>
-      <QuizScreen
-        questions={externalDb.questions}
-        bg={externalDb.bg}
-      />
-    </ThemeProvider>
+  <ThemeProvider theme={externalDb.theme}>
+    <QuizScreen
+      questions={externalDb.questions}
+      bg={externalDb.bg}
+    />
+  </ThemeProvider>
 
-  </div>
 );
 
 export async function getServerSideProps(context) {
